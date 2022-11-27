@@ -50,6 +50,8 @@ public class CharacterControl : MonoBehaviour
         transform.position = newPos;
     }
 
+
+    //add force to jump, should be called in animation
     public void AddJumpForce() 
     {
         rb.AddForce(Vector3.up * JumpStrength, ForceMode.Force);

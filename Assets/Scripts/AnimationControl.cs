@@ -31,6 +31,8 @@ public class AnimationControl : MonoBehaviour
     //update parameters in animator according to players inputs
     void UpdateAnimParams() 
     {
+
+        //set floats used in animator accordind to inputs
         if (Input.GetKey(KeyCode.W))
         {
             if (forwardSpeed <= 1f) 
@@ -60,6 +62,7 @@ public class AnimationControl : MonoBehaviour
             }
         }
 
+        //if no keys is pressed, reset the floats
         if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)) 
         {
             forwardSpeed = Mathf.Lerp(forwardSpeed,0f,0.1f);
@@ -70,11 +73,14 @@ public class AnimationControl : MonoBehaviour
             rightSpeed = Mathf.Lerp(rightSpeed,0f,0.1f);
         }
 
+        //update the parameters in animator
         animator.SetFloat("RightSpeed", rightSpeed);
         animator.SetFloat("ForwardSpeed", forwardSpeed);
 
     }
 
+
+    //set trigger to change animation state
     void JumpCheck() 
     {
         if (Input.GetKeyDown(KeyCode.Space)) 
