@@ -5,27 +5,22 @@ using UnityEngine;
 public class CharacterControl : MonoBehaviour
 {
     public float speed = 2f;
-    Animator animator;
-    public float forwardSpeed;
-    public float rightSpeed;
+    public float JumpStrength = 30f;
+    Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        CharacterIni();
+        rb = GetComponent<Rigidbody>();
     }
 
     // using different func to control the anim
     void Update()
     {
         MovementControl();
-        //AnimTransitControl();
-        //AnimBlendControl();
+      
     }
 
-    void CharacterIni() 
-    {
-        animator = gameObject.GetComponent<Animator>();
-    }
+    
 
     void MovementControl() 
     {
@@ -55,20 +50,10 @@ public class CharacterControl : MonoBehaviour
         transform.position = newPos;
     }
 
-
-    //change transition parameters to change animations
-    void AnimTransitControl() 
+    public void AddJumpForce() 
     {
-
+        rb.AddForce(Vector3.up * JumpStrength, ForceMode.Force);
     }
 
-
-    //change blend patameters to blend animations
-    void AnimBlendControl() 
-    {
-
-    }
-
-    
 
 }
